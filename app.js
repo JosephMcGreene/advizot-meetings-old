@@ -1,8 +1,10 @@
-// "start": "node src/server2/index.js",
+require("dotenv").config();
 const express = require("express");
-const axios = require("axios");
 const app = express();
+const cors = require("cors");
+const axios = require("axios");
 
+//Middleware
 app.use(
 	express.urlencoded({
 		extended: true,
@@ -11,11 +13,13 @@ app.use(
 
 app.use(express.json());
 
-app.post("/post", (req, res) => {
+//Routes
+app.post("/post", cors(), (req, res) => {
 	console.log(req.body);
-	console.log(req.body.name);
+	console.log(res.body);
 });
 
+//Server Start
 const PORT = process.env.PORT || 8080;
 app.listen(PORT, () => {
 	console.log(`Server is listening at http://localhost:${PORT}`);
