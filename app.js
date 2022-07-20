@@ -4,6 +4,8 @@ const app = express();
 const cors = require("cors");
 const axios = require("axios");
 
+console.log(process.env.COACH_KEY);
+
 //Middleware
 app.use(
 	express.urlencoded({
